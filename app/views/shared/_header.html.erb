@@ -7,11 +7,9 @@
     <li><%= link_to "Home", root_path,  class: "nav-link px-2 link-secondary" %></li>
   </ul>
 
-<%
-=begin %>
   <% if user_signed_in? %>
     <div class="col-md-3 text-end">
-      <%= link_to "My pege", user_path(current_user.id), class: "btn btn-outline-primary me-2" %>
+      <%# <%= link_to "My pege", user_path(current_user.id), class: "btn btn-outline-primary me-2" %> %>
       <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
     </div>
   <% else %>
@@ -20,6 +18,4 @@
     <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
   </div>
   <% end %>
-<%
-=end %>
 </header>
