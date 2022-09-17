@@ -55,3 +55,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'pry-rails'
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
