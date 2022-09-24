@@ -6,7 +6,7 @@
       <div class="col-md-4 text-center">
         <%= f.label :avater do %>
         <% if @user.avater.attached? %>
-          <%= image_tag @user.avater, class: "round-img", id: "avater"%>
+          <%= image_tag @user.avater, class: "round-img" %>
         <% else %>
           <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-circle round-img" viewBox="0 0 16 16">
             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
