@@ -1,9 +1,14 @@
 <%= render "shared/header" %>
 
+
 <%= form_with model: @user, local: true do |f| %>
   <div class="profile-wrap">
+
     <div class="row">
       <div class="col-md-4 text-center">
+
+        <%= render 'shared/error_messages', model: f.object %>
+
         <%= f.label :avatar do %>
         <% if @user.avatar.attached? %>
           <%= image_tag @user.avatar, class: "round-img avatar-prev" %>
@@ -16,6 +21,7 @@
         <%= f.file_field :avatar, class: "avatar-field", style: 'display:none;' %>
         <% end %>
       </div>
+
       <div class="col-md-8">
         <h1><%= f.text_field :name, class: 'form-control' %></h1>
         <div class="row aline-items-center">
