@@ -13,7 +13,7 @@
         <% if @user.avatar.attached? %>
           <%= image_tag @user.avatar, class: "round-img avatar-prev" %>
         <% else %>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-circle round-img avater-prev" viewBox="0 0 16 16">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-circle round-img avatar-prev" viewBox="0 0 16 16">
             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
           </svg>
@@ -29,10 +29,10 @@
             Camera: <%=  f.text_field :camera, class: 'form-control'  %>
           </div>
           <div class="col-md-4 profile-colums">
-            Camera Career: <%=  f.text_field :camera_carrer, class: 'form-control' %>
+            Camera Career: <%=  f.text_field :camera_career, class: 'form-control' %>
           </div>
           <div class="col-md-4 profile-colums">
-            Model Career: <%=  f.text_field :model_carrer, class: 'form-control' %>
+            Model Career: <%=  f.text_field :model_career, class: 'form-control' %>
           </div>
         </div>
         <div class="form-group">
