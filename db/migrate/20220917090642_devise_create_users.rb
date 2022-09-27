@@ -8,8 +8,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :encrypted_password, null: false, default: ""
       t.string :name,               null: false
       t.string :camera
-      t.string :camera_carrer
-      t.string :model_carrer
+      t.string :camera_career
+      t.string :model_career
 
       ## Recoverable
       t.string   :reset_password_token

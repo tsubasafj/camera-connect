@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 2022_09_17_100247) do
     t.string "encrypted_password", default: "", null: false
     t.string "name", null: false
     t.string "camera"
-    t.string "camera_carrer"
-    t.string "model_carrer"
+    t.string "camera_career"
+    t.string "model_career"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
