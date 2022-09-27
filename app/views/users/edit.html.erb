@@ -1,0 +1,40 @@
+<%= render "shared/header" %>
+
+
+<%= form_with model: @user, local: true do |f| %>
+  <div class="profile-wrap">
+    <div class="row">
+      <div class="col-md-4 text-center">
+
+        <%= render 'shared/error_messages', model: f.object %>
+
+        <%= f.label :avatar do %>
+        <% if @user.avatar.attached? %>
+          <%= image_tag @user.avatar, class: "round-img avatar-prev" %>
+        <% else %>
+          <%= image_tag "blank-profile-picture-g3e5129d24_640.png", class: "round-img avatar-prev" %>
+        <% end %>
+        <%= f.file_field :avatar, class: "avatar-field", style: 'display:none;' %>
+        <% end %>
+      </div>
+
+      <div class="col-md-8">
+        <h1><%= f.text_field :name, class: 'form-control' %></h1>
+        <div class="row aline-items-center">
+          <div class="col-md-4 profile-colums">
+            Camera: <%=  f.text_field :camera, class: 'form-control'  %>
+          </div>
+          <div class="col-md-4 profile-colums">
+            Camera Career: <%=  f.text_field :camera_career, class: 'form-control' %>
+          </div>
+          <div class="col-md-4 profile-colums">
+            Model Career: <%=  f.text_field :model_career, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'Update', class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
