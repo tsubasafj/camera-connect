@@ -9,8 +9,8 @@ class User < ApplicationRecord
   with_options length: { maximum: 40 } do
     validates :name, presence: true
     validates :camera
-    validates :camera_carrer
-    validates :model_carrer
+    validates :camera_career
+    validates :model_career
   end
 
 
