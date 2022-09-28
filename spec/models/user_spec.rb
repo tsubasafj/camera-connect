@@ -5,13 +5,29 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
   end
 
-  describe 'ユーザー新規登録' do
-    context '新規登録できる場合' do
+  describe 'userモデル単体テスト' do
+    context '内容に問題がない場合' do
       it '必要な情報が存在すれば登録できる' do
         expect(@user).to be_valid
       end
+      it 'avatarが空でも更新できる' do
+        @user.avatar = nil
+        expect(@user).to be_valid
+      end
+      it 'cameraが空でも更新できる' do
+        @user.camera = ''
+        expect(@user).to be_valid
+      end
+      it 'camera_careerが空でも更新できる' do
+        @user.camera_career = ''
+        expect(@user).to be_valid
+      end
+      it 'model_careerが空でも更新できる' do
+        @user.model_career = ''
+        expect(@user).to be_valid
+      end
     end
-    context '新規登録できない場合' do
+    context '内容に問題がある場合' do
       it 'nameが空では登録できない' do
         @user.name = ''
         @user.valid?
@@ -74,36 +90,6 @@ RSpec.describe User, type: :model do
         @user.password_confirmation = @user.password
         @user.valid?
         expect(@user.errors.full_messages).to include 'Password is too long (maximum is 128 characters)'
-      end
-    end
-  end
-  describe 'マイページ編集' do
-    context '更新できる場合' do
-      it '必要な情報があれば更新できる' do
-        expect(@user).to be_valid
-      end
-      it 'avatarが空でも更新できる' do
-        @user.avatar = nil
-        expect(@user).to be_valid
-      end
-      it 'cameraが空でも更新できる' do
-        @user.camera = ''
-        expect(@user).to be_valid
-      end
-      it 'camera_careerが空でも更新できる' do
-        @user.camera_career = ''
-        expect(@user).to be_valid
-      end
-      it 'model_careerが空でも更新できる' do
-        @user.model_career = ''
-        expect(@user).to be_valid
-      end
-    end
-    context '更新できない場合' do
-      it 'nameが空では更新できない' do
-        @user.name = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include "Name can't be blank"
       end
       it 'nameが41文字以上では更新できない' do
         @user.name = Faker::Lorem.characters(number: 41)
