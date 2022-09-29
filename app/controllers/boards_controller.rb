@@ -3,9 +3,17 @@ class BoardsController < ApplicationController
   end
 
   def new
+    @board = Board.new
   end
 
   def create
+    @board = Board.new(board_params)
+    binding.pry
+    if @board.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private
