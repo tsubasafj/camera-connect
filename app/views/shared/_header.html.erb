@@ -1,21 +1,23 @@
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-  <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">Camera Connect
-    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
-  </a>
+  <%= link_to "Camera Connect", root_path, class: "d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" %>
 
   <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
     <li><%= link_to "Home", root_path,  class: "nav-link px-2 link-secondary" %></li>
+    
+    <% if user_signed_in? %>
+      <li><%= link_to "Post", new_board_path,  class: "nav-link px-2 link-secondary" %></li>
+     <% end %>
   </ul>
 
   <% if user_signed_in? %>
     <div class="col-md-3 text-end">
-      <%= link_to "My pege", user_path(current_user.id), class: "btn btn-outline-primary me-2" %>
-      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
+      <%= link_to "Account", user_path(current_user.id), class: "btn btn-outline-primary me-2" %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary me-2" %>
     </div>
   <% else %>
   <div class="col-md-3 text-end">
     <%= link_to "Login", new_user_session_path, class: "btn btn-outline-primary me-2" %>
-    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary me-2" %>
   </div>
   <% end %>
 </header>
