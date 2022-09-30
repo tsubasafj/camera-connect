@@ -4,22 +4,22 @@
   
   <%= render 'shared/error_messages', model: f.object %>
 
-  <div class="col-md-6">
+  <div class="col-md-7">
     <%= f.label :title, class: 'form-label' %>
     <%= f.text_field :title, class: 'form-control' %>
   </div>
   
-  <div class="col-12">
+  <div class="col-10">
     <%= f.label :content, class: 'form-label' %>
-    <%= f.text_area :content, class: 'form-control', size: "20x10" %>
+    <%= f.text_area :content, class: 'form-control', rows: "10" %>
   </div>
 
-  <div class="col-md-2">
+  <div class="col-md-3">
     <%= f.label :want_id, "Wanted", class: 'form-label' %>
     <%= f.collection_select(:want_id, Want.all, :id, :name, {}, {class:"form-select"}) %>
   </div>
 
-  <div class="col-md-2">
+  <div class="col-md-3">
     <%= f.label :prefecture_id, "Prefecture", class: 'form-label' %>
     <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"form-select"}) %>
   </div>
