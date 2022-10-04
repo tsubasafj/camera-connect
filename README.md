@@ -28,7 +28,7 @@
 
 | Column           | Type       | Option                        |
 | ---------------- | ---------- | ----------------------------- |
-| name             | string     | null: false                   |
+| title            | string     | null: false                   |
 | content          | text       | null: false                   |
 | want_id          | integer    | null: false                   |
 | prefecture_id    | integer    | null: false                   |
