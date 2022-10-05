@@ -1,4 +1,51 @@
-## テーブル設計
+# README
+
+
+# アプリケーション名
+Camera Connect
+
+# アプリケーション概要
+カメラマンとポートレートモデルを繋ぐSNS
+
+# URL
+https://camera-connect.herokuapp.com/
+
+# テスト用アカウント
+- Basic認証 
+  - ID: admin
+  - PASS: 2222
+- テスト用ユーザー
+  - EMAIL: test@test.com
+  - PASS: a11111
+
+# 利用方法
+## 新規募集（カメラマンorモデル）
+---
+1. トップページのヘッダーからユーザー新規登録を行う
+2. ヘッダーのPOSTをクリックして募集する内容（タイトル・内容・募集する相手・募集する地域）を入力し投稿する
+
+# アプリケーションを作成した背景
+自身の趣味であるところの写真撮影に関するアプリケーションを作成したいと考えたのが始まり。  
+
+写真を共有するSNSは多数存在するが、カメラマンとモデルをマッチングすることを意図していないため、  
+マッチングする手段の一つになるアプリケーションを開発することにした。
+
+# 要件定義
+https://docs.google.com/spreadsheets/d/1B61RxCOtjn2ClruvVaSGN8cTAwtZPpTDkY1hMsRcqI4/edit?usp=sharing
+
+# 実装予定
+現在、投稿機能の実装中。  
+  〜今後の実装予定〜
+- DM機能
+- 写真投稿機能
+- コメント機能
+- フォロー機能
+- いいね!機能
+
+# データベース設計
+[![Image from Gyazo](https://i.gyazo.com/bcba0053d50aa1b647869d2fa73af45c.png)](https://gyazo.com/bcba0053d50aa1b647869d2fa73af45c)
+
+# テーブル設計
 
 ## users テーブル
 
@@ -131,3 +178,23 @@
 
 - belongs_to :follower, class_name: "User"
 - belongs_to :followed, class_name: "User"
+
+
+# 画面遷移図
+[![Image from Gyazo](https://i.gyazo.com/f2c2b9e15ea2fa2661658d62ca5d9adc.png)](https://gyazo.com/f2c2b9e15ea2fa2661658d62ca5d9adc)
+
+# 開発環境
+- Ruby 2.6.5
+- Ruby on Rails 6.0.6
+- MySQL 5.6.51
+- Rspec
+- GitHub
+- Heroku
+- Visual Studio Code
+
+# ローカルでの動作方法
+以下コマンドを順に実行  
+% git clone https://camera-connect.herokuapp.com/  
+% cd camera-connect  
+% bundle install  
+% yarn install
