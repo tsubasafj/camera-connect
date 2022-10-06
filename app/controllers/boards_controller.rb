@@ -1,5 +1,6 @@
 class BoardsController < ApplicationController
   def index
+    @boards = Board.includes(:user).order('created_at DESC')
   end
 
   def new
