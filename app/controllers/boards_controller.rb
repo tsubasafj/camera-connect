@@ -16,6 +16,18 @@ class BoardsController < ApplicationController
     end
   end
 
+  def show
+    
+  end
+
+  def edit
+
+  end
+
+  def update
+    
+  end
+
   private
 
   def board_params
