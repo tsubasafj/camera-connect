@@ -14,3 +14,7 @@
 nav.pagination {
   display: none;
 }
+
+.card-body a {
+  text-decoration: none;
+}
