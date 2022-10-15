@@ -3,11 +3,11 @@
 <div class="card mb-2">
   <div class="card-body">
     <h3 class="card-title d-flex p-3">
-      <%= link_to image_tag(@board.user.avatar, class:'index-round-img'), user_path(@board.user.id) %>
+      <%= link_to image_tag(@board.user.avatar, class:'show-round-img'), user_path(@board.user.id) %>
   
       <div class="pt-4 mb-0 lh-sm">
         <strong>
-          <%= link_to @board.user.name, user_path(@board.user.id), class:'index-user-name' %>
+          <%= link_to @board.user.name, user_path(@board.user.id), class:'user-name' %>
         </strong>
       </div>
     </h3>
