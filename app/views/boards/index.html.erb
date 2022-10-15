@@ -7,21 +7,21 @@
     <% @boards.each do |board| %>
       <div class="card mb-2">
         <div class="card-body">
-          <h3 class="card-title d-flex p-3">
+          <h5 class="card-title d-flex">
             <%= link_to image_tag(board.user.avatar, class:'index-round-img'), user_path(board.user.id) %>
         
-            <div class="pt-4 mb-0 lh-sm">
+            <div class="pt-2 mb-0 lh-sm">
               <strong>
-                <%= link_to board.user.name, user_path(board.user.id), class:'index-user-name' %>
+                <%= link_to board.user.name, user_path(board.user.id), class:'user-name' %>
               </strong>
             </div>
-          </h3>
+          </h5>
 
-          <%= link_to(board_path(board), class: "card-body") do %>
+          <%= link_to(board_path(board), class: "index-link") do %>
             <div class="row justify-content-center">
-              <h4 class="card-title col-10 mb-3 lh-sm">
-                <%= board.title %>
-              </h4>
+              <h5 class="card-title col-10 mb-3 lh-sm">
+                <%= board.title.truncate(20) %>
+              </h5>
             </div>
 
             <div class="row justify-content-end">
@@ -38,12 +38,12 @@
             </div>
 
               <div class="row justify-content-end">
-                <div class="col-7 text-muted p-3 lh-sm text-end">
+                <div class="col-7 text-muted lh-sm text-end">
                   <%= board.created_at.to_s(:datetime_jp) %>
                 </div>
               </div>
             <div class="row justify-content-center">
-              <p class="card-text col-10 text-muted pb-3 mb-0 lh-sm">
+              <p class="card-text col-10 text-muted mb-0 lh-sm">
                 <%= board.content.truncate(100) %>
               </p>
             </div>
@@ -53,6 +53,6 @@
     <% end %>
 
     <%= paginate @boards %>
-    
+
   </div>
 </div>
