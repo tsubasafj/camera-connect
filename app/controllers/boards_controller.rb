@@ -1,4 +1,6 @@
 class BoardsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @boards = Board.includes(:user).order('created_at DESC').page(params[:page]).per(4)
   end

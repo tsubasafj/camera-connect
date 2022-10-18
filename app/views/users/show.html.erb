@@ -23,7 +23,7 @@
             Model Career: <%= @user.model_career%>
           </div>
         </div>
-        <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-outline-dark common-btn edit-profile-btn" %>
+        <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-outline-dark common-btn edit-profile-btn" if current_user.id == @user.id%>
       </div>
     </div>
   </div>
