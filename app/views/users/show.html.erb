@@ -3,7 +3,7 @@
 <div class="profile-wrap">
   <div class="row">
     <div class="col-md-4 text-center">
-      <% if @user.avatar.attached? %>
+      <% if @user.avatar.present? %>
         <%= image_tag @user.avatar, class: "round-img" %>
       <% else %>
         <%= image_tag "blank-profile-picture-g3e5129d24_640.png", class: "round-img avatar-prev" %>

@@ -8,7 +8,11 @@
       <div class="card mb-2">
         <div class="card-body">
           <h5 class="card-title d-flex">
-            <%= link_to image_tag(board.user.avatar, class:'index-round-img'), user_path(board.user.id) %>
+            <% if board.user.avatar.present? %>
+              <%= link_to image_tag(board.user.avatar, class:'index-round-img'), user_path(board.user.id) %>
+            <% else %>
+              <%= image_tag "blank-profile-picture-g3e5129d24_640.png", class: "index-round-img avatar-prev" %>
+            <% end %>
         
             <div class="pt-2 mb-0 lh-sm">
               <strong>
