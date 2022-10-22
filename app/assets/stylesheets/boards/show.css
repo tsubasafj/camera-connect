@@ -6,3 +6,11 @@
   margin-right: 20px;
 }
 
+.link-style a{
+  text-decoration: none;
+  color: black;
+}
+
+.show-lists {
+  margin-left: 30%;
+}
