@@ -2,7 +2,7 @@
 
 <div class="card mb-2">
   <div class="card-body">
-    <div class="d-flex">
+    <div class="d-flex justify-content-between">
       <h3 class="card-title d-flex p-3">
         <% if @board.user.avatar.present? %>
           <%= link_to image_tag(@board.user.avatar, class:'show-round-img'), user_path(@board.user.id) %>
@@ -16,7 +16,8 @@
           </strong>
         </div>
       </h3>
-      <ul class="list-group link-style show-lists" >
+      <% if current_user.id == @board.user.id %>
+      <ul class="list-group link-style">
         <li class="list-group-item">
           <%= link_to "Edit" , edit_board_path(@board.id) %>
         </li>
@@ -24,6 +25,7 @@
           <%= link_to "destory" %>
         </li>
       </ul>
+      <% end %>
     </div>
 
     <div class="row justify-content-center">
