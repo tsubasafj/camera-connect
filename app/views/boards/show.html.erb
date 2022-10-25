@@ -1,20 +1,32 @@
 <%= render "shared/header" %>
 
 <div class="card mb-2">
-  <div class="card-body">
-    <h3 class="card-title d-flex p-3">
-      <% if @board.user.avatar.present? %>
-        <%= link_to image_tag(@board.user.avatar, class:'show-round-img'), user_path(@board.user.id) %>
-      <% else %>
-        <%= image_tag "blank-profile-picture-g3e5129d24_640.png", class: "show-round-img avatar-prev" %>
+  <div class="card-body" id="card">
+    <div class="d-flex justify-content-between">
+      <h3 class="card-title d-flex p-3">
+        <% if @board.user.avatar.present? %>
+          <%= link_to image_tag(@board.user.avatar, class:'show-round-img'), user_path(@board.user.id) %>
+        <% else %>
+          <%= image_tag "blank-profile-picture-g3e5129d24_640.png", class: "show-round-img avatar-prev" %>
+        <% end %>
+        
+        <div class="pt-4 mb-0 lh-sm">
+          <strong>
+            <%= link_to @board.user.name, user_path(@board.user.id), class:'user-name' %>
+          </strong>
+        </div>
+      </h3>
+      <% if current_user.id == @board.user.id %>
+      <ul class="list-group link-style" id="pull-down" style="display:none">
+        <li class="list-group-item">
+          <%= link_to "Edit" , edit_board_path(@board.id) %>
+        </li>
+        <li class="list-group-item">
+          <%= link_to "destory" %>
+        </li>
+      </ul>
       <% end %>
-      
-      <div class="pt-4 mb-0 lh-sm">
-        <strong>
-          <%= link_to @board.user.name, user_path(@board.user.id), class:'user-name' %>
-        </strong>
-      </div>
-    </h3>
+    </div>
 
     <div class="row justify-content-center">
       <h4 class="card-title col-10 mb-3 lh-sm">
