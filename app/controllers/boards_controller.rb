@@ -33,6 +33,14 @@ class BoardsController < ApplicationController
     end
   end
 
+  def destroy
+    if @board.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
+
   private
 
   def board_params
