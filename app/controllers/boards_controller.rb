@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_board, only: [:show, :edit, :update]
+  before_action :set_board, only: [:show, :edit, :update, :destroy]
 
   def index
     @boards = Board.includes(:user).order('created_at DESC').page(params[:page]).per(4)
@@ -30,6 +30,14 @@ class BoardsController < ApplicationController
       redirect_to board_path(@board.id)
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @board.destroy
+      redirect_to root_path
+    else
+      render :show
     end
   end
 
