@@ -19,10 +19,10 @@
       <% if current_user.id == @board.user.id %>
       <ul class="list-group link-style" id="pull-down" style="display:none">
         <li class="list-group-item">
-          <%= link_to "Edit" , edit_board_path(@board.id) %>
+          <%= link_to "Edit", edit_board_path(@board) %>
         </li>
         <li class="list-group-item">
-          <%= link_to "destory" %>
+          <%= link_to "Delete", board_path(@board), method: :delete %>
         </li>
       </ul>
       <% end %>
