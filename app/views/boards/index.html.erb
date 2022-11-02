@@ -9,9 +9,9 @@
         <div class="card-body">
           <h5 class="card-title d-flex">
             <% if board.user.avatar.present? %>
-              <%= link_to image_tag(board.user.avatar, class:'index-round-img'), user_path(board.user.id) %>
+              <%= link_to image_tag(board.user.avatar, class:'small-round-img'), user_path(board.user.id) %>
             <% else %>
-              <%= link_to image_tag("blank-profile-picture-g3e5129d24_640.png", class: "index-round-img avatar-prev"), user_path(board.user.id) %>
+              <%= link_to image_tag("blank-profile-picture-g3e5129d24_640.png", class: "small-round-img avatar-prev"), user_path(board.user.id) %>
             <% end %>
         
             <div class="pt-2 mb-0 lh-sm">
