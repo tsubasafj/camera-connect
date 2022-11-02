@@ -23,8 +23,24 @@
             Model Career: <%= @user.model_career%>
           </div>
         </div>
-        <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-outline-dark common-btn edit-profile-btn" if current_user.id == @user.id%>
+        <% if current_user.id == @user.id %>
+          <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-outline-dark" %>
+        <% else %>
+          <% if @haveRoom == true %>
+            <%= link_to "DM", room_path %>
+          <% else %>
+            <%= form_with model: @room, local: true do |f|%>
+              <%= fields_for @user_room do |u| %>
+                <%= u.hidden_field :user_id, value: @user.id %>
+            <% end %>
+              <div class="d-grid gap-2">
+                <%= f.submit "Send DM", class: "btn btn-outline-dark" %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+   
