@@ -1,0 +1,46 @@
+<%= render "shared/header" %>
+
+<% @user_rooms.each do |e| %>
+  <% @messages.each do |m| %>
+    <% if e.user_id == current_user.id %>
+      <div class="d-flex justify-content-end">
+        <% if e.user.avatar.present? %>
+          <%= link_to image_tag(e.user.avatar, class:'small-round-img'), user_path(e.user.id) %>
+        <% else %>
+          <%= link_to image_tag("blank-profile-picture-g3e5129d24_640.png", class: "small-round-img avatar-prev"), user_path(e.user.id) %>
+        <% end %>
+        <div class="pt-3 mb-0 lh-sm">
+          <strong>
+            <%= link_to e.user.name, user_path(e.user.id), class:'user-name' %>
+          </strong>
+        </div>
+          <div class="pt-3 mb-0 lh-sm ms-2">
+          <%= m.content %>
+          <div class="row m-1">
+            <%= m.created_at.to_s(:datetime_jp)%>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="d-flex justify-content-start">
+        <% if e.user.avatar.present? %>
+          <%= link_to image_tag(e.user.avatar, class:'small-round-img'), user_path(e.user.id) %>
+        <% else %>
+          <%= link_to image_tag("blank-profile-picture-g3e5129d24_640.png", class: "small-round-img avatar-prev"), user_path(e.user.id) %>
+        <% end %>
+        <div class="pt-3 mb-0 lh-sm">
+          <strong>
+            <%= link_to e.user.name, user_path(e.user.id), class:'user-name' %>
+          </strong>
+        </div>
+        <div class="pt-3 mb-0 lh-sm ms-2">
+          <%= m.content %>
+          <div class="row m-1">
+            <%= m.created_at.to_s(:datetime_jp)%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+<hr>
