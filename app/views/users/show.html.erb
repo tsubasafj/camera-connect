@@ -26,8 +26,8 @@
         <% if current_user.id == @user.id %>
           <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-outline-dark" %>
         <% else %>
-          <% if @haveRoom == true %>
-            <%= link_to "DM", room_path %>
+          <% if @have_room == true %>
+            <%= link_to "DM", room_path(@room_id), class: "btn btn-outline-dark" %>
           <% else %>
             <%= form_with model: @room, local: true do |f|%>
               <%= fields_for @user_room do |u| %>
