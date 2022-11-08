@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :boards
+  has_many :user_rooms
+  has_many :rooms, through: :user_rooms
+  has_many :messages 
   has_one_attached :avatar
 
   with_options length: { maximum: 40 } do
