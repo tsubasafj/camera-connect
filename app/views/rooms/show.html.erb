@@ -1,38 +1,54 @@
 <%= render "shared/header" %>
 
-  <% @messages.each do |m| %>
-    <% if m.user_id == current_user.id %>
-      <div class="d-flex justify-content-end">
-        <% if m.user.avatar.present? %>
-          <%= link_to image_tag(m.user.avatar, class:'small-round-img'), user_path(m.user.id) %>
-        <% else %>
-          <%= link_to image_tag("blank-profile-picture-g3e5129d24_640.png", class: "small-round-img avatar-prev"), user_path(m.user.id) %>
-        <% end %>
-          <div class="pt-3 lh-sm">
-          <div class="my-message-field">
-          <%= m.content %>
-          </div>
-          <div class="ms-3 mt-1">
-            <%= m.created_at.to_s(:datetime_jp)%>
-          </div>
-        </div>
-      </div>
-    <% else %>
-      <div class="d-flex justify-content-start">
-        <% if m.user.avatar.present? %>
-          <%= link_to image_tag(m.user.avatar, class:'small-round-img'), user_path(m.user.id) %>
-        <% else %>
-          <%= link_to image_tag("blank-profile-picture-g3e5129d24_640.png", class: "small-round-img avatar-prev"), user_path(m.user.id) %>
-        <% end %>
+<% @messages.each do |m| %>
+  <% if m.user_id == current_user.id %>
+    <div class="d-flex justify-content-end">
+      <% if m.user.avatar.present? %>
+        <%= link_to image_tag(m.user.avatar, class:'small-round-img'), user_path(m.user.id) %>
+      <% else %>
+        <%= link_to image_tag("blank-profile-picture-g3e5129d24_640.png", class: "small-round-img avatar-prev"), user_path(m.user.id) %>
+      <% end %>
         <div class="pt-3 lh-sm">
-          <div class="other-message-field">
-          <%= m.content %>
-          </div>
-          <div class="ms-3 mt-1">
-            <%= m.created_at.to_s(:datetime_jp)%>
-          </div>
+        <div class="my-message-field">
+        <%= m.content %>
+        </div>
+        <div class="ms-3 mt-1">
+          <%= m.created_at.to_s(:datetime_jp)%>
         </div>
       </div>
-    <% end %>
+    </div>
+  <% else %>
+    <div class="d-flex justify-content-start">
+      <% if m.user.avatar.present? %>
+        <%= link_to image_tag(m.user.avatar, class:'small-round-img'), user_path(m.user.id) %>
+      <% else %>
+        <%= link_to image_tag("blank-profile-picture-g3e5129d24_640.png", class: "small-round-img avatar-prev"), user_path(m.user.id) %>
+      <% end %>
+      <div class="pt-3 lh-sm">
+        <div class="other-message-field">
+        <%= m.content %>
+        </div>
+        <div class="ms-3 mt-1">
+          <%= m.created_at.to_s(:datetime_jp)%>
+        </div>
+      </div>
+    </div>
   <% end %>
+<% end %>
+
 <hr>
+
+
+  <%= form_with model: [@room, @message], local: true do |f| %>
+  <%= render 'shared/error_messages', model: @message %>
+  <div class="row">
+    <div class="d-flex justify-content-end mt-3">
+      <div class="col-3">
+      <%= f.text_field :content, placeholder: "Message", class: 'form-control' %>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end col-12 mt-3">
+      <%= f.submit "Send", class: "btn btn-dark" %>
+    <div>
+  </div>
+  <% end %>
