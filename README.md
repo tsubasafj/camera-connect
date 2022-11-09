@@ -17,11 +17,18 @@ https://camera-connect.herokuapp.com/
 - テスト用ユーザー
   - EMAIL: test@test.com
   - PASS: a11111
+  - EMAIL: test2@test.com
+  - PASS: a11111
 
 # 利用方法
 ## 新規募集（カメラマンorモデル）
 1. トップページのヘッダーからユーザー新規登録を行う
 2. ヘッダーのPOSTをクリックして募集する内容（タイトル・内容・募集する相手・募集する地域）を入力し投稿する
+
+## DM機能
+1. 自分以外の投稿者のプロフィールページへ飛ぶ
+2. Send DM 又は DMボタンをクリックする
+3. DMの詳細画面へ遷移するのでフォームからメッセージを送信する
 
 # アプリケーションを作成した背景
 自身の趣味であるところの写真撮影に関するアプリケーションを作成したいと考えたのが始まり。  
@@ -33,9 +40,8 @@ https://camera-connect.herokuapp.com/
 https://docs.google.com/spreadsheets/d/1B61RxCOtjn2ClruvVaSGN8cTAwtZPpTDkY1hMsRcqI4/edit?usp=sharing
 
 # 実装予定
-現在、投稿機能の実装中。  
+現在、DM機能の実装中。  
   〜今後の実装予定〜
-- DM機能
 - 写真投稿機能
 - コメント機能
 - フォロー機能
