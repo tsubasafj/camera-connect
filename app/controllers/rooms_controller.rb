@@ -16,10 +16,8 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     if UserRoom.where(user_id: current_user.id,room_id: @room.id).present?
       @message = Message.new
-      @user_rooms = @room.user_rooms
-      @partner = User.where.not(id:current_user.id)
       @my_messages=Message.where(user_id: current_user.id)
-      @other_messages=Message.where(user_id: @partner)
+      @other_messages=Message.where.not(user_id: current_user.id)
       @messages=@my_messages.or(@other_messages)
       @messages=@messages.order(:created_at)
     else
