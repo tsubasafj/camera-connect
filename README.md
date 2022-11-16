@@ -8,7 +8,8 @@ Camera Connect
 カメラマンとポートレートモデルを繋ぐSNS
 
 # URL
-https://camera-connect.herokuapp.com/
+https://camera-connect.herokuapp.com/ (heroku)
+http://54.64.173.24/ (AWS)
 
 # テスト用アカウント
 - Basic認証 
