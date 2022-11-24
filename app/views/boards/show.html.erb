@@ -13,17 +13,17 @@
           
           <div class="pt-4 mb-0 lh-sm">
             <strong>
-              <%= link_to @board.user.name, user_path(@board.user.id), class:'user-name' %>
+              <%= link_to @board.user.name, user_path(@board.user.id), class:'user-name text-dark link-secondary' %>
             </strong>
           </div>
         </h3>
         <% if current_user.id == @board.user.id %>
         <ul class="list-group link-style" id="pull-down" style="display:none">
           <li class="list-group-item">
-            <%= link_to "Edit", edit_board_path(@board) %>
+            <%= link_to "Edit", edit_board_path(@board), class:'text-dark link-secondary' %>
           </li>
           <li class="list-group-item">
-            <%= link_to "Delete", board_path(@board), method: :delete %>
+            <%= link_to "Delete", board_path(@board), method: :delete, class:'text-dark link-secondary' %>
           </li>
         </ul>
         <% end %>
