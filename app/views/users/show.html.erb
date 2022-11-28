@@ -1,46 +1,47 @@
 <%= render "shared/header" %>
 
-<div class="profile-wrap">
-  <div class="row">
-    <div class="col-md-4 text-center">
-      <% if @user.avatar.present? %>
-        <%= image_tag @user.avatar, class: "round-img" %>
-      <% else %>
-        <%= image_tag "blank-profile-picture-g3e5129d24_640.png", class: "round-img avatar-prev" %>
-      <% end %>
-    </div>
-    <div class="col-md-8">
-      <div class="row">
-        <h1><%= @user.name %></h1>
-        <div class="row aline-items-center mb-3">
-          <div class="col-md-4 profile-columns">
-            Camera: <%= @user.camera %> 
-          </div>
-          <div class="col-md-4 profile-columns">
-            Camera Career: <%= @user.camera_career %>
-          </div>
-          <div class="col-md-4 profile-columns">
-            Model Career: <%= @user.model_career%>
-          </div>
-        </div>
-        <% if current_user.id == @user.id %>
-          <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-outline-dark" %>
+<div class="container py-3">
+  <div class="profile-wrap">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <% if @user.avatar.present? %>
+          <%= image_tag @user.avatar, class: "round-img" %>
         <% else %>
-          <% if @have_room == true %>
-            <%= link_to "DM", room_path(@room_id), class: "btn btn-outline-dark" %>
+          <%= image_tag "blank-profile-picture-g3e5129d24_640.png", class: "round-img avatar-prev" %>
+        <% end %>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <h1><%= @user.name %></h1>
+          <div class="row aline-items-center mb-3">
+            <div class="col-md-4 profile-columns">
+              Camera: <%= @user.camera %> 
+            </div>
+            <div class="col-md-4 profile-columns">
+              Camera Career: <%= @user.camera_career %>
+            </div>
+            <div class="col-md-4 profile-columns">
+              Model Career: <%= @user.model_career%>
+            </div>
+          </div>
+          <% if current_user.id == @user.id %>
+            <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-outline-dark" %>
           <% else %>
-            <%= form_with model: @room, local: true do |f|%>
-              <%= fields_for @user_room do |u| %>
-                <%= u.hidden_field :user_id, value: @user.id %>
-            <% end %>
-              <div class="d-grid gap-2">
-                <%= f.submit "Send DM", class: "btn btn-outline-dark" %>
-              </div>
+            <% if @have_room == true %>
+              <%= link_to "DM", room_path(@room_id), class: "btn btn-outline-dark" %>
+            <% else %>
+              <%= form_with model: @room, local: true do |f|%>
+                <%= fields_for @user_room do |u| %>
+                  <%= u.hidden_field :user_id, value: @user.id %>
+              <% end %>
+                <div class="d-grid gap-2">
+                  <%= f.submit "Send DM", class: "btn btn-outline-dark" %>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-   
