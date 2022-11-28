@@ -1,38 +1,42 @@
-<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 bg-dark">
-  <%= link_to "Camera Connect", root_path, class: "d-flex align-items-center col-md-3 mb-2 mb-md-0 ms-2 text-white text-decoration-none fs-2" %>
+<header class="bg-dark text-white">
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between pt-3 mb-0">
+      <%= link_to "Camera Connect", root_path, class: "d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-white text-decoration-none fs-2" %>
 
-  <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-    <li>
-      <%= link_to root_path, class: "nav-link link-light mt-1" do %>
-        <i class="fa-solid fa-house fa-xl"></i>
-      <% end %>
-    </li>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to new_board_path, class: "nav-link link-light" do %>
-          <i class="fa-regular fa-square-plus fa-2x"></i>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-
-  <% if user_signed_in? %>
-    <div class="col-md-3 text-end">
-      <%= link_to user_path(current_user.id), class: "btn btn-dark me-2" do %>
-        <i class="fa-solid fa-user fa-xl"></i>
-      <% end %>
-      <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-secondary me-2" do %>
-        <i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
+      <% if user_signed_in? %>
+        <div class="col-md-3 text-end">
+          <%= link_to user_path(current_user.id), class: "btn btn-dark me-2" do %>
+            <i class="fa-solid fa-user fa-xl"></i>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-secondary me-2" do %>
+            <i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="col-md-3 text-end">
+          <%= link_to new_user_session_path, class: "btn btn-outline-light me-2" do %>
+            <i class="fa-solid fa-arrow-right-to-bracket fa-lg"></i>
+          <% end %>
+          <%= link_to new_user_registration_path, class: "btn btn-secondary me-2" do %>
+            <i class="fa-solid fa-user-plus fa-lg"></i>
+          <% end %>
+        </div>
       <% end %>
     </div>
-  <% else %>
-  <div class="col-md-3 text-end">
-    <%= link_to new_user_session_path, class: "btn btn-outline-light me-2" do %>
-      <i class="fa-solid fa-arrow-right-to-bracket fa-lg"></i>
-    <% end %>
-    <%= link_to new_user_registration_path, class: "btn btn-secondary me-2" do %>
-      <i class="fa-solid fa-user-plus fa-lg"></i>
-    <% end %>
+
+    <ul class="nav nav-pills col-12 justify-content-center pb-1">
+      <li class="nav-item">
+        <%= link_to root_path, class: "nav-link text-light mt-1" do %>
+          <i class="fa-solid fa-house fa-xl"></i>
+        <% end %>
+      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to new_board_path, class: "nav-link text-light" do %>
+            <i class="fa-regular fa-square-plus fa-2x"></i>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   </div>
-  <% end %>
 </header>
