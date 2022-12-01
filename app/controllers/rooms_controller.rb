@@ -16,12 +16,8 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     if UserRoom.where(user_id: current_user.id,room_id: @room.id).present?
       @message = Message.new
-      @user_rooms = @room.user_rooms
-      @partner = @user_rooms.where.not(user_id: current_user.id)
-      @my_messages=Message.where(user_id: current_user.id)
-      @other_messages=Message.where.not(user_id: @partner_id)
-      @messages=@my_messages.or(@other_messages)
-      @messages=@messages.order(:created_at)
+      @messages = @room.messages
+      @user_room = @room.user_rooms
     else
       redirect_to user_path(@partner)
     end
