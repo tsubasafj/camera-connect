@@ -27,13 +27,19 @@
     <ul class="nav nav-pills col-12 justify-content-center">
       <li class="nav-item">
         <%= link_to root_path, class: "nav-link text-light link-secondary" do %>
-          <i class="fa-solid fa-house"></i> home
+          <i class="fa-solid fa-house"></i> HOME
         <% end %>
       </li>
       <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to new_board_path, class: "nav-link text-light link-secondary" do %>
-            <i class="fa-regular fa-square-plus"></i> post
+            <i class="fa-regular fa-square-plus"></i> POST
+          <% end %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to rooms_path, class: "nav-link text-light link-secondary" do %>
+            <i class="fa-solid fa-envelope"></i> DM
           <% end %>
         </li>
       <% end %>
