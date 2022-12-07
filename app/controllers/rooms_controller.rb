@@ -2,7 +2,14 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @rooms = Room.includes(:user).order('created_at DESC')
+    @current_rooms = current_user.rooms
+    my_room_ids = []
+  
+    @current_rooms.each do |r|
+      my_room_ids << r.id
+    end
+    
+    @another_rooms = UserRoom.where(room_id: my_room_ids).where.not(user_id: current_user.id).order("created_at DESC")
   end
 
   def create
@@ -19,7 +26,7 @@ class RoomsController < ApplicationController
       @messages = @room.messages
       @user_room = @room.user_rooms
     else
-      redirect_to user_path(@partner)
+      redirect_to user_path(current_user.id)
     end
   end
 
