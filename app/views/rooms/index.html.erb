@@ -1,1 +1,37 @@
 <%= render "shared/header" %>
+
+<div class="container py-5">
+  <% @another_rooms.each do |r| %>
+    <div class="row justify-content-center">
+      <div class="card mb-3 col-10">
+        <div class="card-body col-10 px-0 d-flex justify-content-start align-items-start">
+          
+          <div class="icon">
+            <% if r.user.avatar.present? %>
+              <%= link_to image_tag(r.user.avatar, class:'small-round-img'), user_path(r.user.id) %>
+            <% else %>
+              <%= link_to image_tag("blank-profile-picture-g3e5129d24_640.png", class: "small-round-img"), user_path(r.user.id) %>
+            <% end %>
+          </div>
+
+          <div class="card-text col-12">
+            <div class="col-12">
+              <%= link_to user_path(r.user.id), class: "user-name text-dark link-secondary" do %>
+                <%= r.user.name %>
+              <% end %>
+            </div>
+            <div class="d-flex col-12 text-muted justify-content-between">
+              <div class="content">
+              <%= Message.find_by(id: r.room.message_ids.last).content.truncate(20) %>
+              </div>
+              <div class="created_at">
+                <%= r.created_at.to_s(:datetime_jp)%>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
