@@ -4,7 +4,7 @@
   <% @another_rooms.each do |r| %>
     <div class="row justify-content-center">
       <div class="card mb-3 col-10">
-        <div class="card-body col-10 px-0 d-flex justify-content-start align-items-start">
+        <div class="card-body col-12 px-0 d-flex justify-content-start align-items-start">
 
           <div class="icon">
             <% if r.user.avatar.present? %>
@@ -14,11 +14,17 @@
             <% end %>
           </div>
 
-          <div class="card-text col-12">
-            <div class="col-12">
+          <div class="card-text col-10">
+            <div class="d-flex justify-content-between">
               <%= link_to user_path(r.user.id), class: "user-name text-dark link-secondary" do %>
                 <%= r.user.name %>
               <% end %>
+
+              <ul class="list-group link-style col-auto mb-auto" style="display:none">
+                <li class="list-group-item">
+                  <%= link_to "Delete", room_path(r.room_id), method: :delete, class:'text-dark link-secondary' %>
+                </li>
+              </ul>
             </div>
 
             <%= link_to(room_path(r.room_id), class: "index-link") do %>
